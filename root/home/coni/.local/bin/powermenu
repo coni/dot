@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 theme="full_circle"
-dir="$HOME/.config/rofi/powermenu"
+dir="$HOME/.config/rofi/"
 
-color="letsfrans.rasi"
+color="perfectblue.rasi"
 theme="row_square.rasi"
 
 sed -i -e "s/@import .*/@import \"$color\"/g" $dir/styles/colors.rasi
 
-rofi_command="rofi -theme $dir/$theme"
+rofi_command="rofi -theme $dir/theme/$theme"
 
 # Options
 shutdown=""
