@@ -7,8 +7,8 @@
 # cat $HOME/.config/termColor/default
 
 export PATH=$PATH:$HOME/.local/bin/:$HOME/.local/bin/platform-tools/
-export LANG=fr_FR.UTF-8
-export LC_ALL=fr_FR.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export NNN_OPTS="H"
 export EDITOR="vim"
 export NNN_PLUG='h:preview-tabbed;i:renamer;c:cdpath;a:autojump'
@@ -24,3 +24,4 @@ fi
 
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
+. "$HOME/.cargo/env"
