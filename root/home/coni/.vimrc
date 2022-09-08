@@ -111,12 +111,14 @@ Plug 'tpope/vim-commentary'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'Shirk/vim-gas'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 " colorscheme wal
 
 "lsp-complete
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <C-j>   pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
@@ -209,7 +211,10 @@ function RunCode()
     w !python %:p
   elseif &ft == "cs"
     w !dotnet run
+  else
+    w !make && make run
   endif
 endfunction
 
 call ToggleHiddenAll()
+hi def link gasOpcodeX86_PENT_SSE X86

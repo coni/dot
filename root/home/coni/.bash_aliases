@@ -1,5 +1,7 @@
 alias sudo="sudo "
 alias gl="gally_launcher"
+alias ins="sudo pacman -Syu"
+alias unins="sudo pacman -R"
 
 alias se=sudoedit
 alias e=$EDITOR
