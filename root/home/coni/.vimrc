@@ -14,7 +14,7 @@ nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 nnoremap <F2> :set invpaste paste?<CR>
 nnoremap <S-h> :call ToggleHiddenAll()<CR>
 nnoremap <C-h> :call ToggleSyntax()<CR>
-nnoremap <C-i> :call RunCode()<CR>
+nnoremap <C-i> :call RunCode(run_c, run_py, run_cs, run_default)<CR>
 set pastetoggle=<F2>
 
 
@@ -129,16 +129,20 @@ function! ToggleHiddenAll()
       endif
 endfunction
 
-function RunCode()
+let run_c="make && ./main"
+let run_py="python "
+let run_cs="dotnet run"
+let run_default="./" . @%
+
+function RunCode(run_c, run_py, run_cs, run_default)
 	if &ft == 'c'
-    w !make && ./main
-    " w !make && make run
+    execute "!" . a:run_c
   elseif &ft == 'python'
-    w !python %:p
+    execute "!" . a:run_py . @%
   elseif &ft == "cs"
-    w !dotnet run
+    execute "!" . a:run_cs
   else
-    w !make && make run
+    execute "!" . a:run_default
   endif
 endfunction
 
