@@ -16,6 +16,7 @@ nnoremap <S-h> :call ToggleHiddenAll()<CR>
 nnoremap <C-h> :call ToggleSyntax()<CR>
 nnoremap <C-i> :call RunCode(run_c, run_py, run_cs, run_default)<CR>
 set pastetoggle=<F2>
+inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 
 " ---------GENERAL SETTINGS------------
@@ -70,30 +71,18 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-
-""Syntax highlighting and autocompletion
-
-""File search and navigation
-" Plug 'preservim/nerdtree'
-
-""Editor interface and theming
-" Plug 'ryanoasis/vim-devicons'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Plug 'yggdroot/indentline'
 Plug 'tpope/vim-commentary'
-
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'mattn/vim-lsp-settings'
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'Shirk/vim-gas'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-"Debugging, refactoring and version control
-"Plug 'puremourning/vimspector'
-
-"Plug 'gmarik/Vundle.vim'
-"
+Plug 'dense-analysis/ale'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 call plug#end()
+let g:deoplete#enable_at_startup = 1
+
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
